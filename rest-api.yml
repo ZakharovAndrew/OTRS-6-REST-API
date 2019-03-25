@@ -1,0 +1,43 @@
+---
+Debugger:
+  DebugThreshold: debug
+  TestMode: '0'
+Description: REST API v1.1 by Andrew & Vladmir
+FrameworkVersion: 6.0.16
+Provider:
+  Operation:
+    SessionCreate:
+      Description: Creates a Session
+      MappingInbound: {}
+      MappingOutbound: {}
+      Type: Session::SessionCreate
+    TicketCreate:
+      Description: ''
+      IncludeTicketData: '0'
+      Type: Ticket::TicketCreate
+    TicketGet:
+      Description: TicketGet
+      IncludeTicketData: '0'
+      Type: Ticket::TicketGet
+  Transport:
+    Config:
+      KeepAlive: ''
+      MaxLength: '100000000'
+      RouteOperationMapping:
+        SessionCreate:
+          RequestMethod:
+          - POST
+          Route: /Session
+        TicketCreate:
+          RequestMethod:
+          - POST
+          Route: /TicketCreate
+        TicketGet:
+          RequestMethod:
+          - GET
+          Route: /TicketGet/:TicketID
+    Type: HTTP::REST
+RemoteSystem: ''
+Requester:
+  Transport:
+    Type: ''
